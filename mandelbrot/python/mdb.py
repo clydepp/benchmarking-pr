@@ -17,6 +17,8 @@ def mandelbrot_set(xmin, xmax, ymin, ymax, width, height, max_iter):
     return np.array([[mandelbrot(complex(r, i), max_iter) 
                      for r in r1] for i in r2])
 
+
+'''
 def onselect(eclick, erelease):
     x1, y1 = eclick.xdata, eclick.ydata
     x2, y2 = erelease.xdata, erelease.ydata
@@ -62,3 +64,5 @@ rs = RectangleSelector(ax, onselect, useblit=True,
 plt.title("Click and drag to zoom. Right-click to reset.")
 plt.colorbar(img, ax=ax, label='Iterations')
 plt.show()
+
+'''
