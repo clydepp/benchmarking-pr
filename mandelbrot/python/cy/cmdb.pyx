@@ -5,7 +5,7 @@ from libc.math cimport sqrt
 
 # Define the data types
 ctypedef cnp.float64_t DTYPE_t
-ctypedef cnp.int_t ITYPE_t
+ctypedef cnp.int64_t ITYPE_t
 
 def mandelbrot_cy(double complex c, int max_iter):
     cdef double complex z = c
@@ -21,7 +21,7 @@ def mandelbrot_cy(double complex c, int max_iter):
 
 def mandelbrot_set_cy(double xmin, double xmax, double ymin, double ymax, 
                       int width, int height, int max_iter):
-    cdef cnp.ndarray[ITYPE_t, ndim=2] result = np.zeros((height, width), dtype=np.int_)
+    cdef cnp.ndarray[ITYPE_t, ndim=2] result = np.zeros((height, width), dtype=np.int64)
     cdef double x_step = (xmax - xmin) / width
     cdef double y_step = (ymax - ymin) / height
     cdef int i, j

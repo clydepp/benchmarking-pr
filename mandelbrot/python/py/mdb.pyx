@@ -3,20 +3,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.widgets import RectangleSelector
 
-def mandelbrot(c, max_iter):
-    z = c
-    for n in range(max_iter):
-        if abs(z) > 2:
-            return n
-        z = z*z + c
-    return max_iter
+import cython
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.widgets import RectangleSelector
 
 def mandelbrot_set(xmin, xmax, ymin, ymax, width, height, max_iter):
+    def mandelbrot(c, max_iter):
+        z = c
+        for n in range(max_iter):
+            if abs(z) > 2:
+                return n
+            z = z*z + c
+        return max_iter
+    
     r1 = np.linspace(xmin, xmax, width)
     r2 = np.linspace(ymin, ymax, height)
     return np.array([[mandelbrot(complex(r, i), max_iter) 
                      for r in r1] for i in r2])
-
 
 '''
 def onselect(eclick, erelease):
